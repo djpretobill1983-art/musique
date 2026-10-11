@@ -11,6 +11,11 @@
 // Para tirar uma plataforma de um programa, apague a linha dela.
 
 window.MUSIQUE_DOWNLOADS = {
+  // Temporário: ensaio de distribuição. Apagar junto com a linha "teste" do index.html.
+  teste: {
+    versao: "0.0.1",
+    windows: { url: "https://github.com/djpretobill1983-art/musique/releases/download/teste-v0.0.1/Sistema-Integrado-Fadale-Setup-0.0.1.exe" },
+  },
   mix: {
     versao: "",
     windows: { url: "" },
