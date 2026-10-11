@@ -15,6 +15,7 @@ window.MUSIQUE_DOWNLOADS = {
   teste: {
     versao: "0.0.1",
     windows: { url: "https://github.com/djpretobill1983-art/musique/releases/download/teste-v0.0.1/Sistema-Integrado-Fadale-Setup-0.0.1.exe" },
+    android: { url: "https://github.com/djpretobill1983-art/musique/releases/download/teste-v0.0.1/Sistema-Integrado-Fadale-0.0.1.apk" },
   },
   mix: {
     versao: "",
