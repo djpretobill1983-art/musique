@@ -56,22 +56,8 @@ button{font:inherit;color:inherit}
 .btn[aria-disabled="true"]{background:var(--steel);color:var(--muted);cursor:not-allowed;filter:none}
 .btn-sm{padding:7px 12px;font-size:13px}
 
-.desk{display:grid;grid-template-columns:212px minmax(0,1fr);align-items:start;scroll-margin-top:72px}
+.desk{display:grid;grid-template-columns:minmax(0,1fr);align-items:start;scroll-margin-top:72px}
 .maincol{display:grid;min-width:0}
-
-/* ===== AUX (menu) ===== */
-.aux{background:var(--graphite);border-right:1px solid var(--line);padding:14px 12px;overflow:auto;display:flex;flex-direction:column;gap:6px;position:sticky;top:72px;max-height:calc(100vh - 72px);min-height:calc(100vh - 72px)}
-.aux-head{display:flex;justify-content:space-between;align-items:center;padding:2px 4px 8px;border-bottom:1px solid var(--line);margin-bottom:6px}
-.auxbtn{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;width:100%;text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:10px 10px;cursor:pointer;transition:border-color .15s,background .15s}
-.auxbtn:hover{border-color:var(--line2);background:var(--steel)}
-.auxbtn .led{width:8px;height:8px;border-radius:50%;background:#2e2f34;box-shadow:inset 0 0 0 1px #3d3e44}
-.auxbtn .n{font:500 10px var(--font-mono);color:var(--dim)}
-.auxbtn .t{font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.auxbtn[aria-current="true"]{border-color:rgba(255,140,0,.55);background:#211a12}
-.auxbtn[aria-current="true"] .led{background:var(--orange);box-shadow:0 0 8px var(--orange)}
-.aux-foot{margin-top:auto;padding:12px 4px 2px;border-top:1px solid var(--line);display:grid;gap:6px}
-.aux-foot .label{font-size:10px}
-.aux-foot .v{font:500 12px var(--font-mono);color:var(--muted);word-break:break-all}
 
 /* ===== tela ===== */
 .screen{padding:16px;background:var(--black)}
@@ -254,15 +240,19 @@ ol.steps p{color:var(--muted);font-size:14.5px;margin-top:4px}
 .b-q{position:absolute;right:-6px;top:-34px;width:64px;height:64px;z-index:2;filter:drop-shadow(0 0 14px rgba(255,140,0,.5))}
 
 .pcards{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;max-width:1500px;margin-inline:auto}
-.pcard{display:flex;flex-direction:column;gap:6px;text-align:left;background:linear-gradient(180deg,#17181b,#0e0e10);border:1px solid var(--line);border-radius:12px;padding:20px 20px 0;cursor:pointer;overflow:hidden;transition:border-color .2s,transform .2s}
+.pcard{display:flex;flex-direction:column;gap:6px;text-align:left;background:linear-gradient(180deg,#17181b,#0e0e10);border:1px solid var(--line);border-radius:12px;padding:12px 14px 14px;cursor:pointer;overflow:hidden;transition:border-color .2s,transform .2s}
 .pcard:hover{border-color:rgba(255,140,0,.6);transform:translateY(-3px)}
+.pcard.active{border-color:rgba(255,140,0,.6);background:linear-gradient(180deg,#1f1912,#0e0e10)}
+.pcard .ch-n{margin-bottom:8px}
+.pcard .sel{margin-top:10px}
 .pc-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.pc-t{font-family:var(--font-display);font-stretch:118%;font-weight:800;font-size:21px;letter-spacing:.01em;color:var(--white)}
+.pc-t{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-stretch:118%;font-weight:800;font-size:21px;letter-spacing:.01em;color:var(--white)}
 .pc-t b{color:var(--orange);font-weight:800}
+.pc-t svg{flex:none}
 .arrow{width:34px;height:34px;border-radius:50%;border:1px solid var(--line2);display:grid;place-items:center;font-size:16px;color:var(--white);flex:none;transition:background .2s,color .2s,border-color .2s}
 .pcard:hover .arrow{background:var(--orange);border-color:var(--orange);color:var(--orange-ink)}
 .pc-d{color:#cfcecb;font-size:14.5px;max-width:22em;margin-bottom:14px}
-.pc-art{margin-top:auto;height:150px;border-radius:8px 8px 0 0;border:1px solid var(--line2);border-bottom:0;overflow:hidden}
+.pc-art{margin-top:auto;height:150px;border-radius:8px;border:1px solid var(--line2);overflow:hidden}
 .pc-art.real img{width:100%;height:100%;object-fit:cover;object-position:left top;display:block;transform:perspective(600px) rotateX(8deg) scale(1.08);transform-origin:50% 0}
 .pc-art.soon{display:grid;place-items:center;align-content:center;gap:10px;color:var(--orange);background:radial-gradient(ellipse at 50% 120%,rgba(255,140,0,.18),transparent 70%),repeating-linear-gradient(135deg,#111113 0 14px,#141518 14px 28px)}
 .pc-art.soon span{font:600 10.5px var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
@@ -286,61 +276,35 @@ a.vcard .play::after{border-left-color:var(--orange-ink)}
 .vmeta .cat{font:500 11px var(--font-mono);color:var(--orange);letter-spacing:.08em;text-transform:uppercase}
 .vmeta h3{font-size:17px;font-stretch:104%}
 .vmeta .chip{justify-self:start;margin-top:4px}
-/* ===== banco de canais ===== */
-.strips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) auto;gap:12px;align-items:stretch;padding:16px 16px 0;background:var(--black)}
-.strip{min-width:0;display:flex;flex-direction:column;gap:9px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px;cursor:pointer;transition:border-color .15s,background .15s}
-.strip:hover{border-color:var(--line2)}
-.strip.main{background:none;border:0;padding:0 8px 0 14px;justify-content:center}
-.qhome{background:none;border:0;cursor:pointer;display:grid;justify-items:center;gap:8px;padding:6px 10px}
-.qhome .qicon{width:80px;height:80px;display:block;transition:transform .2s,filter .2s}
-.qhome span{font:700 12px var(--font-mono);letter-spacing:.14em;color:var(--muted)}
-.qhome:hover .qicon{transform:scale(1.05)}
-.strip.main.active{background:none}
-.strip.main.active .qhome .qicon{filter:drop-shadow(0 0 10px rgba(255,140,0,.55))}
-.strip.main.active .qhome span{color:var(--orange)}
-.strip.active{border-color:rgba(255,140,0,.6);background:#1f1912}
+/* ===== moldura de canal dos cartões ===== */
 .ch-n{font:700 11px var(--font-mono);color:var(--dim);letter-spacing:.06em;display:flex;justify-content:space-between}
 .ch-n i{font-style:normal;width:7px;height:7px;border-radius:50%;background:#2e2f34;margin-top:2px}
-.strip.active .ch-n i{background:var(--orange);box-shadow:0 0 8px var(--orange)}
-.scrib{cursor:pointer;border-radius:6px;background:#0b0c0d;padding:16px 6px 14px;display:grid;justify-items:center;gap:10px;border:1px solid var(--line);transition:background .15s,border-color .15s}
-.strip:hover .scrib{border-color:var(--line2)}
-.scrib svg{display:block;width:34px;height:28px}
-.scrib .qicon{display:block;width:20px;height:20px}
+.pcard.active .ch-n i{background:var(--orange);box-shadow:0 0 8px var(--orange)}
 
-.scrib .nm{font:700 15px var(--font-mono);letter-spacing:.08em;color:var(--white)}
-.strip.active .scrib{background:var(--orange);border-color:var(--orange)}
-.strip.active .scrib .nm{color:var(--orange-ink)}
-.strip.active .scrib svg *{stroke:var(--orange-ink)!important}
 .sel{text-align:center;border:1px solid var(--line2);background:var(--steel);border-radius:4px;font:700 11px var(--font-mono);padding:7px 0;cursor:pointer;color:var(--muted);letter-spacing:.1em}
-.strip:hover .sel{color:var(--white)}
-.strip.active .sel{background:var(--orange);color:var(--orange-ink);border-color:var(--orange)}
+.pcard:hover .sel{color:var(--white)}
+.pcard.active .sel{background:var(--orange);color:var(--orange-ink);border-color:var(--orange)}
 
 /* ===== responsivo ===== */
 @media (max-width:1280px){
   .nav-links button{padding:10px 9px;font-size:14px}
       }
 @media (max-width:1080px){
-  .nav-links{display:none}
-  .nav{justify-content:space-between}
+  .nav{flex-wrap:wrap;justify-content:space-between;row-gap:4px}
+  .nav-links{order:3;width:100%;margin:0;overflow-x:auto;scrollbar-width:none}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links button{flex:none;white-space:nowrap}
+  .dd{position:static;flex:none}
+  .dd-menu{display:none}
+  .desk{scroll-margin-top:118px}
   .banner-in{grid-template-columns:1fr;padding-block:40px 28px}
   .b-shot{max-width:720px}
   .pcards{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 
-@media (max-width:1180px){
-  .desk{grid-template-columns:176px minmax(0,1fr)}
-  }
 @media (max-width:940px){
   .desk{display:flex;flex-direction:column;align-items:stretch}
-  .aux{position:static;max-height:none;min-height:0}
   .maincol{display:contents}
-  .strips{order:1;border-bottom:1px solid var(--line);padding:10px 16px;gap:6px;grid-template-columns:repeat(4,minmax(0,1fr)) auto}
-  .strip{min-width:0;padding:6px}
-  .strip.main{padding:0 2px 0 4px}
-  .aux{order:2;flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line);padding:10px 16px;gap:6px}
-  .aux-head,.aux-foot{display:none}
-  .auxbtn{width:auto;flex:none;grid-template-columns:auto auto;padding:8px 12px}
-  .auxbtn .n{display:none}
   .screen{order:3;overflow:visible;padding:12px 16px 24px}
   .split,.chain{grid-template-columns:1fr}
   .chain > div + div{border-left:0;border-top:1px solid var(--line)}
@@ -360,13 +324,6 @@ a.vcard .play::after{border-left-color:var(--orange-ink)}
   .pcards{grid-template-columns:1fr}
   .pc-art{height:120px}
           .view{padding:24px 18px 32px}
-  .scrib svg{display:none}
-  .scrib{padding:10px 2px}
-  .scrib .nm{font-size:11px;letter-spacing:.03em}
-  .qhome .qicon{width:50px;height:50px}
-  .qhome span{font-size:10px}
-  .scrib .nm{font-size:10.5px}
-  .ch-n{font-size:9px}
   .gallery{grid-template-columns:1fr}
   .vgrid{grid-template-columns:1fr}
   .plugins{grid-template-columns:1fr}
@@ -385,9 +342,12 @@ a.vcard .play::after{border-left-color:var(--orange-ink)}
     </a>
     <nav class="nav-links" aria-label="Principal">
       <button type="button" data-go="inicio" class="on">Início</button>
+      <button type="button" data-go="downloads">Downloads</button>
       <button type="button" data-go="mix">Produtos</button>
       <div class="dd"><button type="button" class="dd-btn" data-go="solucoes" aria-haspopup="true" aria-expanded="false">Soluções <span class="car" aria-hidden="true">▾</span></button><div class="dd-menu" role="menu"><button type="button" role="menuitem" data-go="solucoes" data-sol="audio"><span class="mi"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M9 20V4M14 20v-8M19 20V7"/></svg></span><span><b>Áudio Profissional</b><small>Projetos e operação</small></span></button><button type="button" role="menuitem" data-go="solucoes" data-sol="video"><span class="mi"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="14" height="11" rx="1.5"/><path d="M16.5 10.5l5-3v9l-5-3"/></svg></span><span><b>Vídeo e Transmissão</b><small>Integração completa</small></span></button><button type="button" role="menuitem" data-go="solucoes" data-sol="igrejas"><span class="mi"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v5M10 4h4M5 21V11l7-4 7 4v10M3 21h18M10 21v-4a2 2 0 0 1 4 0v4"/></svg></span><span><b>Igrejas</b><small>Soluções dedicadas</small></span></button><button type="button" role="menuitem" data-go="solucoes" data-sol="eventos"><span class="mi"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg></span><span><b>Eventos</b><small>Do projeto à operação</small></span></button><button type="button" role="menuitem" data-go="solucoes" data-sol="integracao"><span class="mi"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/><circle cx="12" cy="5.5" r="2.5"/><path d="M10.8 7.7 6.7 16.3M13.2 7.7l4.1 8.6M8 18.5h8"/></svg></span><span><b>Integração</b><small>Várias marcas, uma experiência</small></span></button><button type="button" role="menuitem" data-go="ideia"><span class="mi"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="1.5"/><rect x="9.5" y="9.5" width="5" height="5"/><path d="M9 2.5v3.5M15 2.5v3.5M9 18v3.5M15 18v3.5M2.5 9h3.5M2.5 15h3.5M18 9h3.5M18 15h3.5"/></svg></span><span><b>Tecnologia Própria</b><small>Softwares e drivers</small></span></button></div></div>
       <button type="button" data-go="ideia">Tecnologia</button>
+      <button type="button" data-go="tutoriais">Tutoriais</button>
+      <button type="button" data-go="galeria">Galeria</button>
       <button type="button" data-go="sobre">Sobre</button>
       <button type="button" data-go="contato">Contato</button>
     </nav>
@@ -410,32 +370,15 @@ a.vcard .play::after{border-left-color:var(--orange-ink)}
         <div class="b-device"><img src="telas/pc-02-overview.webp" alt="Mix Musique: visão geral do canal" width="1366" height="768"></div>
       </div>
     </div>
-    <div class="pcards"><button class="pcard" type="button" data-go="mix"><span class="pc-top"><span class="pc-t"><b>MIX</b> MUSIQUE</span><span class="arrow" aria-hidden="true">→</span></span><span class="pc-d">Controle de mixers com uma interface universal.</span><div class="pc-art real"><img src="telas/med/pc-01-faders.webp" alt="Tela do Mix Musique" loading="lazy"></div></button><button class="pcard" type="button" data-go="vj"><span class="pc-top"><span class="pc-t"><b>VJ</b> MUSIQUE</span><span class="arrow" aria-hidden="true">→</span></span><span class="pc-d">Vídeo, mídia e reprodução audiovisual ao vivo.</span><div class="pc-art soon"><svg viewBox="0 0 24 24" width="56" height="56" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="1.5"/><path d="M10 8l5 2.5-5 2.5z"/><path d="M8 21h8"/></svg><span>telas em breve</span></div></button><button class="pcard" type="button" data-go="dj"><span class="pc-top"><span class="pc-t"><b>DJ</b> MUSIQUE</span><span class="arrow" aria-hidden="true">→</span></span><span class="pc-d">Performance, criatividade e controle total.</span><div class="pc-art soon"><svg viewBox="0 0 24 24" width="56" height="56" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/><path d="M12 3a9 9 0 0 1 7.8 4.5"/></svg><span>telas em breve</span></div></button><button class="pcard" type="button" data-go="live"><span class="pc-top"><span class="pc-t"><b>LIVE</b> MUSIQUE</span><span class="arrow" aria-hidden="true">→</span></span><span class="pc-d">Soluções para eventos e transmissões ao vivo.</span><div class="pc-art soon"><svg viewBox="0 0 24 24" width="56" height="56" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2.6"/><path d="M7.2 7.2a6.8 6.8 0 0 0 0 9.6M16.8 7.2a6.8 6.8 0 0 1 0 9.6M4 4a11.3 11.3 0 0 0 0 16M20 4a11.3 11.3 0 0 1 0 16"/></svg><span>telas em breve</span></div></button></div>
+    <div class="pcards"><button class="pcard" type="button" data-go="mix"><span class="pc-top"><span class="pc-t"><b>MIX</b> MUSIQUE</span><span class="arrow" aria-hidden="true">→</span></span><span class="pc-d">Controle de mixers com uma interface universal.</span><div class="pc-art real"><img src="telas/med/pc-01-faders.webp" alt="Tela do Mix Musique" loading="lazy"></div></button><button class="pcard" type="button" data-go="vj"><span class="pc-top"><span class="pc-t"><b>VJ</b> MUSIQUE</span><span class="arrow" aria-hidden="true">→</span></span><span class="pc-d">Vídeo, mídia e reprodução audiovisual ao vivo.</span><div class="pc-art real"><img src="telas/med/vj-01-players.webp" alt="Tela do VJ Musique" loading="lazy"></div></button><button class="pcard" type="button" data-go="dj"><span class="pc-top"><span class="pc-t"><b>DJ</b> MUSIQUE</span><span class="arrow" aria-hidden="true">→</span></span><span class="pc-d">Performance, criatividade e controle total.</span><div class="pc-art real"><img src="telas/med/dj-01-decks.webp" alt="Tela do DJ Musique" loading="lazy"></div></button><button class="pcard" type="button" data-go="live"><span class="pc-top"><span class="pc-t"><b>LIVE</b> MUSIQUE</span><span class="arrow" aria-hidden="true">→</span></span><span class="pc-d">Soluções para eventos e transmissões ao vivo.</span><div class="pc-art real"><img src="telas/med/live-02-ajustes.webp" alt="Tela do Live Musique" loading="lazy"></div></button></div>
   </section>
 
 
 
   <div class="desk" id="desk">
 
-    <!-- AUX = menu -->
-    <nav class="aux" aria-label="Seções">
-      <div class="aux-head"><span class="label">AUX · Menu</span><span class="label" style="color:var(--dim)">8</span></div>
-      <button class="auxbtn" type="button" data-go="ideia"><span class="led"></span><span class="t">Nossa ideia</span><span class="n">A1</span></button>
-      <button class="auxbtn" type="button" data-go="sobre"><span class="led"></span><span class="t">O que somos</span><span class="n">A2</span></button>
-      <button class="auxbtn" type="button" data-go="solucoes"><span class="led"></span><span class="t">Soluções</span><span class="n">A3</span></button>
-      <button class="auxbtn" type="button" data-go="galeria"><span class="led"></span><span class="t">Galeria</span><span class="n">A4</span></button>
-      <button class="auxbtn" type="button" data-go="materias"><span class="led"></span><span class="t">Matérias</span><span class="n">A5</span></button>
-      <button class="auxbtn" type="button" data-go="dicas"><span class="led"></span><span class="t">Dicas</span><span class="n">A6</span></button>
-      <button class="auxbtn" type="button" data-go="downloads"><span class="led"></span><span class="t">Downloads</span><span class="n">A7</span></button>
-      <button class="auxbtn" type="button" data-go="contato"><span class="led"></span><span class="t">Contato</span><span class="n">A8</span></button>
-      <div class="aux-foot">
-        <span class="label">WhatsApp</span><span class="v">(13) 99771-2459</span>
-      </div>
-    </nav>
-
     <!-- TELA -->
     <div class="maincol">
-    <div class="strips" id="strips" aria-label="Canais: cada canal abre um software"></div>
     <main class="screen" id="screen">
       <div class="display">
         <div class="display-bar"><span id="barLeft"><b>MAIN</b> · INÍCIO</span><span id="barRight">MUSIQUE OS</span></div>
@@ -501,7 +444,6 @@ a.vcard .play::after{border-left-color:var(--orange-ink)}
             <span class="name">Mix</span>
             <span class="tagline">// controle universal de mixers</span>
           </div>
-          <div class="subtabs" role="tablist" aria-label="Mix"><button type="button" role="tab" data-pane="geral" aria-selected="true">Visão geral</button><button type="button" role="tab" data-pane="videos" aria-selected="false">Vídeos</button></div>
           <div class="pane" data-pane="geral">
           <div class="chips"><span class="chip st">Produto principal</span><span class="chip">Em desenvolvimento</span></div>
           <p class="lead">Plataforma de controle e operação de mesas de som profissionais. Você aprende uma interface só, e o driver de cada fabricante cuida da comunicação com o equipamento. Uma interface. Várias mesas.</p>
@@ -537,10 +479,6 @@ a.vcard .play::after{border-left-color:var(--orange-ink)}
           </div>
           <div class="actions"><span class="btn btn-primary" aria-disabled="true" data-dl="mix">Download em breve</span><button class="btn btn-line" type="button" data-go="contato">Quero testar</button></div>
         </div>
-          <div class="pane" data-pane="videos" hidden>
-            <p class="lead">Vídeos explicando o Mix na prática, do primeiro uso aos recursos avançados.</p>
-            <div class="vgrid"><article class="vcard"><div class="vthumb"><span class="play" aria-hidden="true"></span><span class="vnum">01</span></div><div class="vmeta"><span class="cat">Primeiros passos</span><h3>Conectando o Mix na sua mesa</h3><span class="chip soon">vídeo em breve</span></div></article><article class="vcard"><div class="vthumb"><span class="play" aria-hidden="true"></span><span class="vnum">02</span></div><div class="vmeta"><span class="cat">Cenas e roteamento</span><h3>Levando a mixagem para outra mesa</h3><span class="chip soon">vídeo em breve</span></div></article><article class="vcard"><div class="vthumb"><span class="play" aria-hidden="true"></span><span class="vnum">03</span></div><div class="vmeta"><span class="cat">Plugins</span><h3>Auto Fader, Feedback Hunter e Analyzer</h3><span class="chip soon">vídeo em breve</span></div></article></div>
-          </div>
         </section>
 
         <!-- CH 02 VJ -->
@@ -550,7 +488,6 @@ a.vcard .play::after{border-left-color:var(--orange-ink)}
             <span class="name">VJ</span>
             <span class="tagline">// media server e vídeo ao vivo</span>
           </div>
-          <div class="subtabs" role="tablist" aria-label="VJ"><button type="button" role="tab" data-pane="geral" aria-selected="true">Visão geral</button><button type="button" role="tab" data-pane="videos" aria-selected="false">Vídeos</button></div>
           <div class="pane" data-pane="geral">
           <div class="chips"><span class="chip">Em desenvolvimento</span></div>
           <p class="lead">Reprodução de vídeo para eventos, cultos e shows. Várias saídas, vários players e integração com o áudio, tudo comandado de um lugar só.</p>
@@ -566,10 +503,6 @@ a.vcard .play::after{border-left-color:var(--orange-ink)}
           </div>
           <div class="actions"><span class="btn btn-primary" aria-disabled="true" data-dl="vj">Download em breve</span><button class="btn btn-line" type="button" data-go="contato">Quero testar</button></div>
         </div>
-          <div class="pane" data-pane="videos" hidden>
-            <p class="lead">Vídeos explicando o VJ na prática, do primeiro uso aos recursos avançados.</p>
-            <div class="vgrid"><article class="vcard"><div class="vthumb"><span class="play" aria-hidden="true"></span><span class="vnum">01</span></div><div class="vmeta"><span class="cat">Apresentação</span><h3>O que o VJ faz</h3><span class="chip soon">vídeo em breve</span></div></article><article class="vcard"><div class="vthumb"><span class="play" aria-hidden="true"></span><span class="vnum">02</span></div><div class="vmeta"><span class="cat">Primeiros passos</span><h3>Montando as saídas de vídeo</h3><span class="chip soon">vídeo em breve</span></div></article><article class="vcard"><div class="vthumb"><span class="play" aria-hidden="true"></span><span class="vnum">03</span></div><div class="vmeta"><span class="cat">Ao vivo</span><h3>Disparando mídia junto com o áudio</h3><span class="chip soon">vídeo em breve</span></div></article></div>
-          </div>
         </section>
 
         <!-- CH 03 DJ -->
@@ -579,7 +512,6 @@ a.vcard .play::after{border-left-color:var(--orange-ink)}
             <span class="name">DJ</span>
             <span class="tagline">// performance musical</span>
           </div>
-          <div class="subtabs" role="tablist" aria-label="DJ"><button type="button" role="tab" data-pane="geral" aria-selected="true">Visão geral</button><button type="button" role="tab" data-pane="videos" aria-selected="false">Vídeos</button></div>
           <div class="pane" data-pane="geral">
           <div class="chips"><span class="chip">Em desenvolvimento</span></div>
           <p class="lead">Plataforma de DJ própria, com suporte a controladores e preparada para novas formas de controle. Visual inspirado em equipamentos clássicos e modernos, com foco total em performance.</p>
@@ -595,10 +527,6 @@ a.vcard .play::after{border-left-color:var(--orange-ink)}
           </div>
           <div class="actions"><span class="btn btn-primary" aria-disabled="true" data-dl="dj">Download em breve</span><button class="btn btn-line" type="button" data-go="contato">Quero testar</button></div>
         </div>
-          <div class="pane" data-pane="videos" hidden>
-            <p class="lead">Vídeos explicando o DJ na prática, do primeiro uso aos recursos avançados.</p>
-            <div class="vgrid"><article class="vcard"><div class="vthumb"><span class="play" aria-hidden="true"></span><span class="vnum">01</span></div><div class="vmeta"><span class="cat">Apresentação</span><h3>O que o DJ faz</h3><span class="chip soon">vídeo em breve</span></div></article><article class="vcard"><div class="vthumb"><span class="play" aria-hidden="true"></span><span class="vnum">02</span></div><div class="vmeta"><span class="cat">Primeiros passos</span><h3>Configurando o controlador</h3><span class="chip soon">vídeo em breve</span></div></article><article class="vcard"><div class="vthumb"><span class="play" aria-hidden="true"></span><span class="vnum">03</span></div><div class="vmeta"><span class="cat">Performance</span><h3>Tocando ao vivo</h3><span class="chip soon">vídeo em breve</span></div></article></div>
-          </div>
         </section>
 
         <!-- CH 04 LIVE -->
@@ -608,7 +536,6 @@ a.vcard .play::after{border-left-color:var(--orange-ink)}
             <span class="name">Live</span>
             <span class="tagline">// operação de áudio e vídeo ao vivo</span>
           </div>
-          <div class="subtabs" role="tablist" aria-label="Live"><button type="button" role="tab" data-pane="geral" aria-selected="true">Visão geral</button><button type="button" role="tab" data-pane="videos" aria-selected="false">Vídeos</button></div>
           <div class="pane" data-pane="geral">
           <div class="chips"><span class="chip">Em desenvolvimento</span></div>
           <p class="lead">Ferramentas para quem opera ao vivo: eventos, igrejas, apresentações e transmissões. Controle e integração entre sistemas para a operação ficar simples na hora que importa.</p>
@@ -624,13 +551,9 @@ a.vcard .play::after{border-left-color:var(--orange-ink)}
           </div>
           <div class="actions"><span class="btn btn-primary" aria-disabled="true" data-dl="live">Download em breve</span><button class="btn btn-line" type="button" data-go="contato">Quero testar</button></div>
         </div>
-          <div class="pane" data-pane="videos" hidden>
-            <p class="lead">Vídeos explicando o Live na prática, do primeiro uso aos recursos avançados.</p>
-            <div class="vgrid"><article class="vcard"><div class="vthumb"><span class="play" aria-hidden="true"></span><span class="vnum">01</span></div><div class="vmeta"><span class="cat">Apresentação</span><h3>O que o Live faz</h3><span class="chip soon">vídeo em breve</span></div></article><article class="vcard"><div class="vthumb"><span class="play" aria-hidden="true"></span><span class="vnum">02</span></div><div class="vmeta"><span class="cat">Primeiros passos</span><h3>Integrando os equipamentos</h3><span class="chip soon">vídeo em breve</span></div></article><article class="vcard"><div class="vthumb"><span class="play" aria-hidden="true"></span><span class="vnum">03</span></div><div class="vmeta"><span class="cat">Na prática</span><h3>Um culto ou evento do começo ao fim</h3><span class="chip soon">vídeo em breve</span></div></article></div>
-          </div>
         </section>
 
-        <!-- A1 NOSSA IDEIA -->
+        <!-- TECNOLOGIA -->
         <section class="view" data-view="ideia" hidden>
           <span class="label"><span class="o">●</span> Conheça nossa ideia</span>
           <h2>Uma interface. Várias mesas.</h2>
@@ -656,7 +579,82 @@ a.vcard .play::after{border-left-color:var(--orange-ink)}
           </div>
         </section>
 
-        <!-- A2 O QUE SOMOS -->
+        <!-- TUTORIAIS: vídeos, matérias e dicas -->
+        <section class="view" data-view="tutoriais" hidden>
+          <span class="label"><span class="o">●</span> Tutoriais</span>
+          <h2>Aprenda a usar.</h2>
+          <div class="subtabs" role="tablist" aria-label="Tutoriais"><button type="button" role="tab" data-pane="videos" aria-selected="true">Vídeos</button><button type="button" role="tab" data-pane="materias" aria-selected="false">Matérias</button><button type="button" role="tab" data-pane="dicas" aria-selected="false">Dicas</button></div>
+          <div class="pane" data-pane="videos">
+            <p class="lead">Vídeos explicando cada software na prática, do primeiro uso aos recursos avançados.</p>
+            <h3>Mix</h3>
+            <div class="vgrid"><article class="vcard"><div class="vthumb"><span class="play" aria-hidden="true"></span><span class="vnum">01</span></div><div class="vmeta"><span class="cat">Primeiros passos</span><h3>Conectando o Mix na sua mesa</h3><span class="chip soon">vídeo em breve</span></div></article><article class="vcard"><div class="vthumb"><span class="play" aria-hidden="true"></span><span class="vnum">02</span></div><div class="vmeta"><span class="cat">Cenas e roteamento</span><h3>Levando a mixagem para outra mesa</h3><span class="chip soon">vídeo em breve</span></div></article><article class="vcard"><div class="vthumb"><span class="play" aria-hidden="true"></span><span class="vnum">03</span></div><div class="vmeta"><span class="cat">Plugins</span><h3>Auto Fader, Feedback Hunter e Analyzer</h3><span class="chip soon">vídeo em breve</span></div></article></div>
+            <h3>VJ</h3>
+            <div class="vgrid"><article class="vcard"><div class="vthumb"><span class="play" aria-hidden="true"></span><span class="vnum">01</span></div><div class="vmeta"><span class="cat">Apresentação</span><h3>O que o VJ faz</h3><span class="chip soon">vídeo em breve</span></div></article><article class="vcard"><div class="vthumb"><span class="play" aria-hidden="true"></span><span class="vnum">02</span></div><div class="vmeta"><span class="cat">Primeiros passos</span><h3>Montando as saídas de vídeo</h3><span class="chip soon">vídeo em breve</span></div></article><article class="vcard"><div class="vthumb"><span class="play" aria-hidden="true"></span><span class="vnum">03</span></div><div class="vmeta"><span class="cat">Ao vivo</span><h3>Disparando mídia junto com o áudio</h3><span class="chip soon">vídeo em breve</span></div></article></div>
+            <h3>DJ</h3>
+            <div class="vgrid"><article class="vcard"><div class="vthumb"><span class="play" aria-hidden="true"></span><span class="vnum">01</span></div><div class="vmeta"><span class="cat">Apresentação</span><h3>O que o DJ faz</h3><span class="chip soon">vídeo em breve</span></div></article><article class="vcard"><div class="vthumb"><span class="play" aria-hidden="true"></span><span class="vnum">02</span></div><div class="vmeta"><span class="cat">Primeiros passos</span><h3>Configurando o controlador</h3><span class="chip soon">vídeo em breve</span></div></article><article class="vcard"><div class="vthumb"><span class="play" aria-hidden="true"></span><span class="vnum">03</span></div><div class="vmeta"><span class="cat">Performance</span><h3>Tocando ao vivo</h3><span class="chip soon">vídeo em breve</span></div></article></div>
+            <h3>Live</h3>
+            <div class="vgrid"><article class="vcard"><div class="vthumb"><span class="play" aria-hidden="true"></span><span class="vnum">01</span></div><div class="vmeta"><span class="cat">Apresentação</span><h3>O que o Live faz</h3><span class="chip soon">vídeo em breve</span></div></article><article class="vcard"><div class="vthumb"><span class="play" aria-hidden="true"></span><span class="vnum">02</span></div><div class="vmeta"><span class="cat">Primeiros passos</span><h3>Integrando os equipamentos</h3><span class="chip soon">vídeo em breve</span></div></article><article class="vcard"><div class="vthumb"><span class="play" aria-hidden="true"></span><span class="vnum">03</span></div><div class="vmeta"><span class="cat">Na prática</span><h3>Um culto ou evento do começo ao fim</h3><span class="chip soon">vídeo em breve</span></div></article></div>
+          </div>
+          <div class="pane" data-pane="materias" hidden>
+            <p class="lead">Textos sobre o que estamos desenvolvendo e por quê. As primeiras matérias estão sendo escritas.</p>
+            <div>
+              <article class="post"><span class="cat">Ideia</span><div><h3>Por que uma interface para várias mesas</h3><p>O problema de reaprender cada equipamento e como a arquitetura de drivers resolve.</p></div><span class="chip soon">em breve</span></article>
+              <article class="post"><span class="cat">Engenharia</span><div><h3>Como testamos um driver de mesa digital</h3><p>Do primeiro pacote capturado na rede até o fader se mexendo na tela.</p></div><span class="chip soon">em breve</span></article>
+              <article class="post"><span class="cat">Igrejas</span><div><h3>Áudio de igreja com equipe de voluntários</h3><p>O que muda quando quem opera troca toda semana.</p></div><span class="chip soon">em breve</span></article>
+            </div>
+          </div>
+          <div class="pane" data-pane="dicas" hidden>
+            <p class="lead">Coisas simples que melhoram o som de qualquer evento ou culto, com ou sem software Musique.</p>
+            <div class="tips">
+              <div class="tip"><span class="k">GANHO</span><h3>Acerte o ganho antes de mexer no fader</h3><p>Com a pessoa falando ou tocando no volume real, ajuste o ganho até o medidor ficar firme no verde, sem acender o vermelho. Depois disso o fader é só para equilibrar a mixagem.</p></div>
+              <div class="tip"><span class="k">MICROFONIA</span><h3>Corte a frequência, não o volume todo</h3><p>Quando um retorno apitar, encontre a frequência exata e corte só ela com um EQ de banda estreita. Afastar o microfone da caixa resolve muitos casos antes de qualquer ajuste.</p></div>
+              <div class="tip"><span class="k">DELAY</span><h3>A conta do delay</h3><p>O som anda cerca de 343 metros por segundo. Para alinhar uma caixa de delay com o PA principal, use a distância entre elas:</p><span class="fig">1 ms ≈ 34 cm · 10 m ≈ 29 ms</span></div>
+              <div class="tip"><span class="k">PHANTOM</span><h3>Fader baixo antes do +48 V</h3><p>Abaixe o fader do canal antes de ligar ou desligar o phantom power. O estalo que sai na caixa pode danificar o equipamento e assusta o público.</p></div>
+              <div class="tip"><span class="k">CENAS</span><h3>Salve uma cena antes de começar</h3><p>Com a passagem de som pronta, salve a cena. Se algo der errado no meio do evento, você volta ao ponto certo em um clique.</p></div>
+              <div class="tip"><span class="k">ORGANIZAÇÃO</span><h3>Dê nome aos canais</h3><p>"VOZ PASTOR" e "VIOLÃO" em vez de "CH 3" e "CH 7". Quem assumir a mesa depois vai entender tudo sem perguntar.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- GALERIA: fotos, matérias e depoimentos dos apps em uso real -->
+        <section class="view" data-view="galeria" hidden>
+          <span class="label"><span class="o">●</span> Galeria</span>
+          <h2>Os apps em uso real.</h2>
+          <div class="subtabs" role="tablist" aria-label="Galeria"><button type="button" role="tab" data-pane="fotos" aria-selected="true">Fotos</button><button type="button" role="tab" data-pane="materias" aria-selected="false">Matérias</button><button type="button" role="tab" data-pane="depoimentos" aria-selected="false">Depoimentos</button></div>
+          <div class="pane" data-pane="fotos">
+            <p class="lead">Fotos de eventos, instalações e da bancada de testes entram aqui assim que forem enviadas.</p>
+            <div class="gallery">
+              <div class="ph real" data-go="mix" role="button" tabindex="0"><img src="telas/pc-01-faders.webp" alt="Mix: tela de faders" loading="lazy"><div class="ov"><b>Mix · Faders</b><span>interface do software</span></div></div>
+              <div class="ph real" data-go="mix" role="button" tabindex="0"><img src="telas/pc-07-plugins.webp" alt="Mix: plugin Auto Fader" loading="lazy"><div class="ov"><b>Mix · Auto Fader</b><span>interface do software</span></div></div>
+              <div class="ph real" data-go="mix" role="button" tabindex="0"><img src="telas/pc-02-overview.webp" alt="Mix: visão geral do canal" loading="lazy"><div class="ov"><b>Mix · Canal</b><span>interface do software</span></div></div>
+              <div class="ph real" data-go="vj" role="button" tabindex="0"><img src="telas/vj-01-players.webp" alt="VJ: players e saídas" loading="lazy"><div class="ov"><b>VJ · Players</b><span>interface do software</span></div></div>
+              <div class="ph real" data-go="vj" role="button" tabindex="0"><img src="telas/vj-02-biblia.webp" alt="VJ: Bíblia na tela" loading="lazy"><div class="ov"><b>VJ · Bíblia</b><span>interface do software</span></div></div>
+              <div class="ph real" data-go="vj" role="button" tabindex="0"><img src="telas/vj-03-warp.webp" alt="VJ: ajuste de projeção" loading="lazy"><div class="ov"><b>VJ · Warp</b><span>interface do software</span></div></div>
+              <div class="ph real" data-go="dj" role="button" tabindex="0"><img src="telas/dj-01-decks.webp" alt="DJ: dois decks e mixer" loading="lazy"><div class="ov"><b>DJ · Decks</b><span>interface do software</span></div></div>
+              <div class="ph real" data-go="dj" role="button" tabindex="0"><img src="telas/dj-02-efeitos.webp" alt="DJ: painel de efeitos" loading="lazy"><div class="ov"><b>DJ · Efeitos</b><span>interface do software</span></div></div>
+              <div class="ph real" data-go="vj" role="button" tabindex="0"><img src="telas/vj-04-mascara.webp" alt="VJ: máscara e multiview" loading="lazy"><div class="ov"><b>VJ · Máscara</b><span>interface do software</span></div></div>
+              <div class="ph real" data-go="live" role="button" tabindex="0"><img src="telas/live-02-ajustes.webp" alt="Live: ajustes sugeridos por canal" loading="lazy"><div class="ov"><b>Live · Ajustes</b><span>interface do software</span></div></div>
+              <div class="ph real" data-go="live" role="button" tabindex="0"><img src="telas/live-01-painel.webp" alt="Live: painel de operação" loading="lazy"><div class="ov"><b>Live · Painel</b><span>interface do software</span></div></div>
+              <div class="ph"><b>Eventos</b><span>fotos em breve</span></div>
+              <div class="ph"><b>Igrejas</b><span>fotos em breve</span></div>
+              <div class="ph"><b>Bancada de testes</b><span>fotos em breve</span></div>
+            </div>
+          </div>
+          <div class="pane" data-pane="materias" hidden>
+            <p class="lead">Relatos de eventos, igrejas e instalações onde os apps foram usados de verdade.</p>
+            <div>
+              <article class="post"><span class="cat">Em uso</span><div><h3>Primeiras matérias</h3><p>Entram aqui assim que os primeiros trabalhos forem registrados.</p></div><span class="chip soon">em breve</span></article>
+            </div>
+          </div>
+          <div class="pane" data-pane="depoimentos" hidden>
+            <p class="lead">O que dizem os técnicos, músicos e equipes que usam os apps no dia a dia.</p>
+            <div class="tips">
+              <div class="tip"><span class="k">DEPOIMENTO</span><h3>Em breve</h3><p>Os primeiros depoimentos entram aqui assim que forem enviados.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SOBRE -->
         <section class="view" data-view="sobre" hidden>
           <span class="label"><span class="o">●</span> O que somos</span>
           <div style="display:flex;gap:22px;align-items:flex-start">
@@ -675,7 +673,7 @@ a.vcard .play::after{border-left-color:var(--orange-ink)}
           </div>
         </section>
 
-        <!-- A3 SOLUÇÕES -->
+        <!-- SOLUÇÕES -->
         <section class="view" data-view="solucoes" hidden>
           <span class="label"><span class="o">●</span> Soluções</span>
           <h2>Do projeto à operação.</h2>
@@ -689,49 +687,7 @@ a.vcard .play::after{border-left-color:var(--orange-ink)}
           </div>
         </section>
 
-        <!-- A4 GALERIA -->
-        <section class="view" data-view="galeria" hidden>
-          <span class="label"><span class="o">●</span> Galeria</span>
-          <h2>Bastidores e trabalhos.</h2>
-          <p class="lead">Fotos de eventos, instalações e da bancada de testes entram aqui assim que forem enviadas.</p>
-          <div class="gallery">
-            <div class="ph real" data-go="mix" role="button" tabindex="0"><img src="telas/pc-01-faders.webp" alt="Mix: tela de faders" loading="lazy"><div class="ov"><b>Mix · Faders</b><span>interface do software</span></div></div>
-            <div class="ph real" data-go="mix" role="button" tabindex="0"><img src="telas/pc-07-plugins.webp" alt="Mix: plugin Auto Fader" loading="lazy"><div class="ov"><b>Mix · Auto Fader</b><span>interface do software</span></div></div>
-            <div class="ph real" data-go="mix" role="button" tabindex="0"><img src="telas/pc-02-overview.webp" alt="Mix: visão geral do canal" loading="lazy"><div class="ov"><b>Mix · Canal</b><span>interface do software</span></div></div>
-            <div class="ph"><b>Eventos</b><span>fotos em breve</span></div>
-            <div class="ph"><b>Igrejas</b><span>fotos em breve</span></div>
-            <div class="ph"><b>Bancada de testes</b><span>fotos em breve</span></div>
-          </div>
-        </section>
-
-        <!-- A5 MATÉRIAS -->
-        <section class="view" data-view="materias" hidden>
-          <span class="label"><span class="o">●</span> Matérias</span>
-          <h2>Por dentro da tecnologia.</h2>
-          <p class="lead">Textos sobre o que estamos desenvolvendo e por quê. As primeiras matérias estão sendo escritas.</p>
-          <div>
-            <article class="post"><span class="cat">Ideia</span><div><h3>Por que uma interface para várias mesas</h3><p>O problema de reaprender cada equipamento e como a arquitetura de drivers resolve.</p></div><span class="chip soon">em breve</span></article>
-            <article class="post"><span class="cat">Engenharia</span><div><h3>Como testamos um driver de mesa digital</h3><p>Do primeiro pacote capturado na rede até o fader se mexendo na tela.</p></div><span class="chip soon">em breve</span></article>
-            <article class="post"><span class="cat">Igrejas</span><div><h3>Áudio de igreja com equipe de voluntários</h3><p>O que muda quando quem opera troca toda semana.</p></div><span class="chip soon">em breve</span></article>
-          </div>
-        </section>
-
-        <!-- A6 DICAS -->
-        <section class="view" data-view="dicas" hidden>
-          <span class="label"><span class="o">●</span> Dicas</span>
-          <h2>Dicas de quem opera.</h2>
-          <p class="lead">Coisas simples que melhoram o som de qualquer evento ou culto, com ou sem software Musique.</p>
-          <div class="tips">
-            <div class="tip"><span class="k">GANHO</span><h3>Acerte o ganho antes de mexer no fader</h3><p>Com a pessoa falando ou tocando no volume real, ajuste o ganho até o medidor ficar firme no verde, sem acender o vermelho. Depois disso o fader é só para equilibrar a mixagem.</p></div>
-            <div class="tip"><span class="k">MICROFONIA</span><h3>Corte a frequência, não o volume todo</h3><p>Quando um retorno apitar, encontre a frequência exata e corte só ela com um EQ de banda estreita. Afastar o microfone da caixa resolve muitos casos antes de qualquer ajuste.</p></div>
-            <div class="tip"><span class="k">DELAY</span><h3>A conta do delay</h3><p>O som anda cerca de 343 metros por segundo. Para alinhar uma caixa de delay com o PA principal, use a distância entre elas:</p><span class="fig">1 ms ≈ 34 cm · 10 m ≈ 29 ms</span></div>
-            <div class="tip"><span class="k">PHANTOM</span><h3>Fader baixo antes do +48 V</h3><p>Abaixe o fader do canal antes de ligar ou desligar o phantom power. O estalo que sai na caixa pode danificar o equipamento e assusta o público.</p></div>
-            <div class="tip"><span class="k">CENAS</span><h3>Salve uma cena antes de começar</h3><p>Com a passagem de som pronta, salve a cena. Se algo der errado no meio do evento, você volta ao ponto certo em um clique.</p></div>
-            <div class="tip"><span class="k">ORGANIZAÇÃO</span><h3>Dê nome aos canais</h3><p>"VOZ PASTOR" e "VIOLÃO" em vez de "CH 3" e "CH 7". Quem assumir a mesa depois vai entender tudo sem perguntar.</p></div>
-          </div>
-        </section>
-
-        <!-- A7 DOWNLOADS -->
+        <!-- DOWNLOADS -->
         <section class="view" data-view="downloads" hidden>
           <span class="label"><span class="o">●</span> Downloads</span>
           <h2>Instaladores oficiais.</h2>
@@ -746,7 +702,7 @@ a.vcard .play::after{border-left-color:var(--orange-ink)}
           </div>
         </section>
 
-        <!-- A8 CONTATO -->
+        <!-- CONTATO -->
         <section class="view" data-view="contato" hidden>
           <span class="label"><span class="o">●</span> Contato</span>
           <h2>Vamos conectar o seu sistema?</h2>
@@ -772,14 +728,13 @@ a.vcard .play::after{border-left-color:var(--orange-ink)}
     vj:{scene:"CH 02 · VJ",bar:"<b>CH 02</b> · VJ"},
     dj:{scene:"CH 03 · DJ",bar:"<b>CH 03</b> · DJ"},
     live:{scene:"CH 04 · Live",bar:"<b>CH 04</b> · LIVE"},
-    ideia:{scene:"AUX 1 · Nossa ideia",bar:"<b>AUX 1</b> · NOSSA IDEIA"},
-    sobre:{scene:"AUX 2 · O que somos",bar:"<b>AUX 2</b> · O QUE SOMOS"},
-    solucoes:{scene:"AUX 3 · Soluções",bar:"<b>AUX 3</b> · SOLUÇÕES"},
-    galeria:{scene:"AUX 4 · Galeria",bar:"<b>AUX 4</b> · GALERIA"},
-    materias:{scene:"AUX 5 · Matérias",bar:"<b>AUX 5</b> · MATÉRIAS"},
-    dicas:{scene:"AUX 6 · Dicas",bar:"<b>AUX 6</b> · DICAS"},
-    downloads:{scene:"AUX 7 · Downloads",bar:"<b>AUX 7</b> · DOWNLOADS"},
-    contato:{scene:"AUX 8 · Contato",bar:"<b>AUX 8</b> · CONTATO"}
+    downloads:{scene:"Downloads",bar:"<b>MENU</b> · DOWNLOADS"},
+    solucoes:{scene:"Soluções",bar:"<b>MENU</b> · SOLUÇÕES"},
+    ideia:{scene:"Tecnologia",bar:"<b>MENU</b> · TECNOLOGIA"},
+    tutoriais:{scene:"Tutoriais",bar:"<b>MENU</b> · TUTORIAIS"},
+    galeria:{scene:"Galeria",bar:"<b>MENU</b> · GALERIA"},
+    sobre:{scene:"Sobre",bar:"<b>MENU</b> · SOBRE"},
+    contato:{scene:"Contato",bar:"<b>MENU</b> · CONTATO"}
   };
 
   /* ícones das faixas */
@@ -788,24 +743,20 @@ a.vcard .play::after{border-left-color:var(--orange-ink)}
     vj:'<svg width="22" height="18" viewBox="0 0 22 18" fill="none" stroke="#ff8c00" stroke-width="1.6"><rect x="1" y="2" width="20" height="12" rx="1.5"/><path d="M9 5.5l5 2.5-5 2.5z"/><path d="M7 17h8"/></svg>',
     dj:'<svg width="22" height="18" viewBox="0 0 22 18" fill="none" stroke="#ff8c00" stroke-width="1.6"><circle cx="11" cy="9" r="7.5"/><circle cx="11" cy="9" r="2"/><path d="M11 1.5a7.5 7.5 0 0 1 6.5 3.7"/></svg>',
     live:'<svg width="22" height="18" viewBox="0 0 22 18" fill="none" stroke="#ff8c00" stroke-width="1.6"><circle cx="11" cy="9" r="2.4"/><path d="M6.5 4.5a6.4 6.4 0 0 0 0 9M15.5 4.5a6.4 6.4 0 0 1 0 9M3.4 1.8a10.5 10.5 0 0 0 0 14.4M18.6 1.8a10.5 10.5 0 0 1 0 14.4"/></svg>',
-    inicio:'<img class="qicon" src="data:image/png;base64,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" alt="" width="20" height="20">'
   };
   const CH = [
     {id:"mix",n:"CH 01",nm:"MIX",f:.78},
     {id:"vj",n:"CH 02",nm:"VJ",f:.70},
     {id:"dj",n:"CH 03",nm:"DJ",f:.74},
-    {id:"live",n:"CH 04",nm:"LIVE",f:.66},
-    {id:"inicio",n:"MAIN",nm:"INÍCIO",f:.75,main:true}
+    {id:"live",n:"CH 04",nm:"LIVE",f:.66}
   ];
-  const host=document.getElementById("strips");
-  CH.forEach(c=>{
-    const s=document.createElement("div");
-    s.className="strip"+(c.main?" main":""); s.dataset.ch=c.id; s.dataset.go=c.id;
-    if(c.main){ s.innerHTML=`<button class="qhome" type="button" data-go="inicio" aria-label="Início">${ICON.inicio}<span>INÍCIO</span></button>`; host.appendChild(s); return; }
-    s.innerHTML=`<div class="ch-n"><span>${c.n}</span><i></i></div>
-      <button class="scrib" type="button" data-go="${c.id}" aria-label="Abrir ${c.main?"início":c.nm}">${ICON[c.id]}<span class="nm">${c.nm}</span></button>
-      <span class="sel" aria-hidden="true">SEL</span>`;
-    host.appendChild(s);
+  /* cada cartão do topo é um canal: no futuro, mais de um programa por segmento */
+  document.querySelectorAll(".pcard").forEach(card=>{
+    const c=CH.find(x=>x.id===card.dataset.go); if(!c) return;
+    card.dataset.ch=c.id;
+    card.insertAdjacentHTML("afterbegin",`<span class="ch-n"><span>${c.n}</span><i></i></span>`);
+    card.querySelector(".pc-t").insertAdjacentHTML("afterbegin",ICON[c.id]);
+    card.insertAdjacentHTML("beforeend",`<span class="sel" aria-hidden="true">SEL</span>`);
   });
 
   /* navegação */
@@ -814,11 +765,10 @@ a.vcard .play::after{border-left-color:var(--orange-ink)}
     if(!VIEWS[id]) id="inicio";
     current=id;
     document.querySelectorAll(".view").forEach(v=>v.hidden = v.dataset.view!==id);
-    document.querySelectorAll(".auxbtn").forEach(b=>b.setAttribute("aria-current", String(b.dataset.go===id)));
-    document.querySelectorAll(".strip").forEach(s=>s.classList.toggle("active", s.dataset.ch===id));
+    document.querySelectorAll(".pcard").forEach(s=>s.classList.toggle("active", s.dataset.ch===id));
     
     document.getElementById("barLeft").innerHTML=VIEWS[id].bar;
-    const navMap={inicio:"inicio",mix:"mix",vj:"mix",dj:"mix",live:"mix",solucoes:"solucoes",ideia:"ideia",sobre:"sobre",contato:"contato"};
+    const navMap={inicio:"inicio",mix:"mix",vj:"mix",dj:"mix",live:"mix",downloads:"downloads",solucoes:"solucoes",ideia:"ideia",tutoriais:"tutoriais",galeria:"galeria",sobre:"sobre",contato:"contato"};
     document.querySelectorAll(".nav-links button").forEach(b=>b.classList.toggle("on", b.dataset.go===navMap[id]));
     if(fromUser && id==="inicio" && window.__navTop){ window.__navTop=false; scrollTo({top:0,behavior:reduce?"auto":"smooth"}); }
     else if(fromUser){
@@ -834,7 +784,8 @@ a.vcard .play::after{border-left-color:var(--orange-ink)}
     const dd=t.closest(".dd"); if(dd){ dd.classList.add("shut"); t.blur(); dd.addEventListener("mouseleave",()=>dd.classList.remove("shut"),{once:true}); }
     if(t.dataset.sol){ const row=document.querySelector('.sol[data-sol="'+t.dataset.sol+'"]'); if(row) setTimeout(()=>row.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"}),350); }
   });
-  const h=(location.hash||"").slice(1);
+  const ANTIGOS={materias:"tutoriais",dicas:"tutoriais"};
+  let h=(location.hash||"").slice(1); h=ANTIGOS[h]||h;
   go(VIEWS[h]?h:"inicio",false);
 
   /* relógio */
