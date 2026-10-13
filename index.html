@@ -234,9 +234,20 @@ ol.steps p{color:var(--muted);font-size:14.5px;margin-top:4px}
 .b-h .l2{font-size:clamp(24px,3.1vw,46px);color:#a9a9ad}
 .b-h .l3{font-size:clamp(28px,3.7vw,56px);color:var(--orange)}
 .b-p{font-size:18px;color:#d3d2cf;max-width:30em}
-.b-shot{position:relative;perspective:1600px;min-width:0}
-.b-device{transform:rotateY(-15deg) rotateX(5deg) rotateZ(-1deg);transform-origin:60% 50%;border-radius:12px;padding:10px;background:linear-gradient(145deg,#2a2b30,#0c0c0e);border:1px solid #3a3b41;box-shadow:0 40px 80px -30px rgba(0,0,0,.95),0 0 60px -10px rgba(255,140,0,.35)}
+.b-shot{position:relative;min-width:0;margin:13% 0 0 18%;transform:scale(1.1);transform-origin:100% 50%}
+/* em monitor largo sobra margem à direita: a pilha cresce para os dois lados e não chega no título */
+@media (min-width:1700px){.b-shot{transform-origin:40% 50%}}
+/* nesta faixa o título ocupa a coluna inteira: a pilha cresce menos para não encostar nele */
+@media (min-width:1400px) and (max-width:1699px){.b-shot{transform:scale(1.03)}}
+.b-device{position:relative;border-radius:12px;padding:10px;background:linear-gradient(145deg,#2a2b30,#0c0c0e);border:1px solid #3a3b41;box-shadow:0 40px 80px -30px rgba(0,0,0,.95)}
 .b-device img{display:block;width:100%;height:auto;border-radius:6px}
+/* pilha de janelas atrás da tela principal: um programa por camada */
+.b-text{position:relative;z-index:1}
+.b-back{position:absolute;inset:0;pointer-events:none;box-shadow:0 30px 60px -30px rgba(0,0,0,.95)}
+.b-back img{height:100%;object-fit:cover;object-position:left top}
+.b-back.k1{transform:translate(-6%,-9%);filter:brightness(.85)}
+.b-back.k2{transform:translate(-12%,-18%);filter:brightness(.7)}
+.b-back.k3{transform:translate(-18%,-27%);filter:brightness(.55);box-shadow:0 0 80px -6px rgba(255,140,0,.7)}
 .b-q{position:absolute;right:-6px;top:-34px;width:64px;height:64px;z-index:2;filter:drop-shadow(0 0 14px rgba(255,140,0,.5))}
 
 .pcards{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;max-width:1500px;margin-inline:auto}
@@ -298,7 +309,7 @@ a.vcard .play::after{border-left-color:var(--orange-ink)}
   .dd-menu{display:none}
   .desk{scroll-margin-top:118px}
   .banner-in{grid-template-columns:1fr;padding-block:40px 28px}
-  .b-shot{max-width:720px}
+  .b-shot{max-width:720px;margin:14% 0 0 16%;transform:none}
   .pcards{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 
@@ -367,10 +378,13 @@ a.vcard .play::after{border-left-color:var(--orange-ink)}
         </div>
       </div>
       <div class="b-shot">
+        <div class="b-device b-back k3" aria-hidden="true"><img src="telas/med/live-02-ajustes.webp" alt=""></div>
+        <div class="b-device b-back k2" aria-hidden="true"><img src="telas/med/dj-01-decks.webp" alt=""></div>
+        <div class="b-device b-back k1" aria-hidden="true"><img src="telas/med/vj-01-players.webp" alt=""></div>
         <div class="b-device"><img src="telas/pc-02-overview.webp" alt="Mix Musique: visão geral do canal" width="1366" height="768"></div>
       </div>
     </div>
-    <div class="pcards"><button class="pcard" type="button" data-go="mix"><span class="pc-top"><span class="pc-t"><b>MIX</b> MUSIQUE</span><span class="arrow" aria-hidden="true">→</span></span><span class="pc-d">Controle de mixers com uma interface universal.</span><div class="pc-art real"><img src="telas/med/pc-01-faders.webp" alt="Tela do Mix Musique" loading="lazy"></div></button><button class="pcard" type="button" data-go="vj"><span class="pc-top"><span class="pc-t"><b>VJ</b> MUSIQUE</span><span class="arrow" aria-hidden="true">→</span></span><span class="pc-d">Vídeo, mídia e reprodução audiovisual ao vivo.</span><div class="pc-art real"><img src="telas/med/vj-01-players.webp" alt="Tela do VJ Musique" loading="lazy"></div></button><button class="pcard" type="button" data-go="dj"><span class="pc-top"><span class="pc-t"><b>DJ</b> MUSIQUE</span><span class="arrow" aria-hidden="true">→</span></span><span class="pc-d">Performance, criatividade e controle total.</span><div class="pc-art real"><img src="telas/med/dj-01-decks.webp" alt="Tela do DJ Musique" loading="lazy"></div></button><button class="pcard" type="button" data-go="live"><span class="pc-top"><span class="pc-t"><b>LIVE</b> MUSIQUE</span><span class="arrow" aria-hidden="true">→</span></span><span class="pc-d">Soluções para eventos e transmissões ao vivo.</span><div class="pc-art real"><img src="telas/med/live-02-ajustes.webp" alt="Tela do Live Musique" loading="lazy"></div></button></div>
+    <div class="pcards"><button class="pcard" type="button" data-go="mix"><span class="pc-top"><span class="pc-t"><b>MIX</b> MUSIQUE</span><span class="arrow" aria-hidden="true">→</span></span><span class="pc-d">Controle de mixers com uma interface universal.</span><div class="pc-art real"><img src="telas/med/pc-02-overview.webp" alt="Tela do Mix Musique" loading="lazy"></div></button><button class="pcard" type="button" data-go="vj"><span class="pc-top"><span class="pc-t"><b>VJ</b> MUSIQUE</span><span class="arrow" aria-hidden="true">→</span></span><span class="pc-d">Vídeo, mídia e reprodução audiovisual ao vivo.</span><div class="pc-art real"><img src="telas/med/vj-01-players.webp" alt="Tela do VJ Musique" loading="lazy"></div></button><button class="pcard" type="button" data-go="dj"><span class="pc-top"><span class="pc-t"><b>DJ</b> MUSIQUE</span><span class="arrow" aria-hidden="true">→</span></span><span class="pc-d">Performance, criatividade e controle total.</span><div class="pc-art real"><img src="telas/med/dj-01-decks.webp" alt="Tela do DJ Musique" loading="lazy"></div></button><button class="pcard" type="button" data-go="live"><span class="pc-top"><span class="pc-t"><b>LIVE</b> MUSIQUE</span><span class="arrow" aria-hidden="true">→</span></span><span class="pc-d">Soluções para eventos e transmissões ao vivo.</span><div class="pc-art real"><img src="telas/med/live-02-ajustes.webp" alt="Tela do Live Musique" loading="lazy"></div></button></div>
   </section>
 
 
