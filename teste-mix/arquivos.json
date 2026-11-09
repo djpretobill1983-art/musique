@@ -1,14 +1,14 @@
 {
   "gerado": "2026-11-09",
-  "sal": "h+B2a9rGdWgQNJ9XZSwTow==",
+  "sal": "03+dgjmCfQNnNJtRm6sXZA==",
   "voltas": 250000,
-  "verificador": "7+t10SGQH59gf15hoWnV2S8bU0mlMxhUrWUSzeCAlQ8o+B8ecjc=",
+  "verificador": "iVDGbyYu9/t5QxLxts6wX8mHu2oqGPYL5FVZWfbRGjuu6D0GCfc=",
   "arquivos": [
     {
-      "nome": "Mix-Musique-ANDROID-LIGA-NA-MESA-2026-11-09-v3-AXIOS16.apk",
-      "bin": "arquivo-1-733553d7.bin",
-      "bytes": 23987861,
-      "sha256": "d4a39e50c18deda0d61fe1d4ad83d0267f328fce0befad95da260a265906c4d8",
+      "nome": "Mix-Musique-ANDROID-LIGA-NA-MESA-2026-11-09-v4.apk",
+      "bin": "arquivo-1-07f56f18.bin",
+      "bytes": 23635851,
+      "sha256": "ffd2be9e620a74aed6010854a83d4ca3652270e4add8d13c0dc5ce9aa7cff7f1",
       "plataforma": "android"
     }
   ]
