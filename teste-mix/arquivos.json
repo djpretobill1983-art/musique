@@ -1,21 +1,21 @@
 {
   "gerado": "2026-11-09",
-  "sal": "JKIRj0GoOnIIkaT1l9IpIQ==",
+  "sal": "m8QVezz/+YN9EuLfncQUnw==",
   "voltas": 250000,
-  "verificador": "d2MoBAe0kdnbEzoLhYnTN7X/mvMKihvFDnDrsRjXeVlEPU9+WbU=",
+  "verificador": "91YLSXNUYFNsRy57JtJqn+Xeep+yx4SxIYvQ7D/aZ5KyDqkIT94=",
   "arquivos": [
     {
-      "nome": "Mix-Musique-ANDROID-LABORATORIO-AXIOS24-2026-11-09-v5.apk",
-      "bin": "arquivo-1-d4126492.bin",
-      "bytes": 23668619,
-      "sha256": "922e7ff6850343583da5057098fb18325ada5b32c3b3042b0a4a338ab00bd73a",
+      "nome": "Mix-Musique-ANDROID-LABORATORIO-AXIOS24-2026-11-09-v6.apk",
+      "bin": "arquivo-1-1449dfb3.bin",
+      "bytes": 23672715,
+      "sha256": "0a0bfec6e9e4d11b8efd4ad9119052fb1f1388e97e85ef538a0d823658502373",
       "plataforma": "android"
     },
     {
-      "nome": "Mix-Musique-ANDROID-LIGA-NA-MESA-2026-11-09-v5.apk",
-      "bin": "arquivo-2-203d7ce6.bin",
-      "bytes": 23668619,
-      "sha256": "97233442f465184dd9bcfad70c944a36e655a6934c1a0ea69c71fcac16bb59c1",
+      "nome": "Mix-Musique-ANDROID-LIGA-NA-MESA-2026-11-09-v6.apk",
+      "bin": "arquivo-2-e50bea43.bin",
+      "bytes": 23672715,
+      "sha256": "4c99a9c565af12a87f81c96798fa13f07a7ed77a5749d2022e1640fd67f95202",
       "plataforma": "android"
     }
   ]
