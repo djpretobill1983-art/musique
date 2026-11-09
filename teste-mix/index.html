@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Teste de Download</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0a0a0b;--matte:#111113;--graphite:#17181b;--panel:#1b1c20;--steel:#212226;
+  --line:#2b2c31;--line2:#3a3b41;--white:#f2f1ee;--muted:#9d9ea5;--dim:#66676e;
+  --orange:#ff8c00;--orange-ink:#150900;--orange-soft:rgba(255,140,0,.12);--ok:#5ccf8f;--pro:#c8201e;
+  --font-body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  --font-display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--black);color:var(--white);font:15px/1.55 var(--font-body)}
+a{color:var(--orange)}
+.wrap{max-width:860px;margin:0 auto;padding:28px 16px 64px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+.marca{font:800 20px/1 var(--font-display);font-stretch:115%;letter-spacing:.02em;text-decoration:none;color:var(--white)}
+.marca b{color:var(--orange)}
+.selo{font:500 11px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--orange);border:1px solid var(--orange);border-radius:4px;padding:4px 8px;background:var(--orange-soft)}
+h1{font:800 clamp(26px,5vw,38px)/1.05 var(--font-display);font-stretch:110%;margin:0 0 8px}
+.lead{color:var(--muted);margin:0 0 26px;max-width:62ch}
+.passos{display:flex;gap:6px;margin:0 0 18px;padding:0;list-style:none;flex-wrap:wrap}
+.passos li{flex:1 1 0;min-width:92px;font:500 11px var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--dim);border-top:3px solid var(--line2);padding-top:7px}
+.passos li.feito{color:var(--muted);border-color:var(--ok)}
+.passos li.agora{color:var(--white);border-color:var(--orange)}
+.cartao{background:var(--graphite);border:1px solid var(--line);border-radius:10px;padding:22px}
+.cartao h2{font:700 20px var(--font-display);margin:0 0 6px}
+.cartao p.sub{color:var(--muted);margin:0 0 18px}
+label{display:block;font:500 12px var(--font-mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+input{width:100%;font:inherit;color:var(--white);background:var(--matte);border:1px solid var(--line2);border-radius:6px;padding:11px 12px;margin:0 0 14px}
+input:focus{outline:2px solid var(--orange);outline-offset:1px;border-color:transparent}
+input.chave{font:500 17px var(--font-mono);letter-spacing:.06em;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 14px var(--font-body);border-radius:6px;padding:11px 18px;border:1px solid transparent;cursor:pointer;text-decoration:none}
+.btn-primary{background:var(--orange);color:var(--orange-ink)}
+.btn-line{background:transparent;color:var(--white);border-color:var(--line2)}
+.btn:disabled{opacity:.5;cursor:default}
+.linha{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.erro{color:#ff6b5e;min-height:1.4em;margin:2px 0 10px;font-size:14px}
+.planos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:16px}
+.plano{text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px;color:var(--white);font:inherit;cursor:pointer}
+.plano[aria-pressed="true"]{border-color:var(--orange);box-shadow:0 0 0 1px var(--orange) inset;background:var(--steel)}
+.plano .k{font:500 11px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--orange)}
+.plano .preco{font:800 24px var(--font-display);margin:6px 0 4px}
+.plano .preco small{font:500 13px var(--font-body);color:var(--muted)}
+.plano ul{margin:8px 0 0;padding-left:18px;color:var(--muted);font-size:13px}
+.aviso{border:1px dashed var(--line2);border-radius:8px;padding:12px 14px;color:var(--muted);font-size:13.5px;margin:0 0 16px}
+.aviso b{color:var(--white)}
+.chave-grande{font:700 clamp(17px,4.4vw,24px) var(--font-mono);letter-spacing:.08em;background:var(--matte);border:1px solid var(--line2);border-radius:8px;padding:16px;text-align:center;margin:0 0 14px;word-break:break-all;color:var(--orange)}
+.resumo{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;font-size:14px;margin:0 0 16px}
+.resumo dt{color:var(--dim);font:500 12px var(--font-mono);text-transform:uppercase;padding-top:2px}
+.resumo dd{margin:0}
+.barra{height:8px;background:var(--matte);border-radius:4px;overflow:hidden;margin:6px 0 8px}
+.barra i{display:block;height:100%;width:0;background:var(--orange);transition:width .15s}
+.ok{color:var(--ok)}
+.real{margin-top:30px}
+.real h2{font:700 20px var(--font-display);margin:0 0 12px}
+.real ol{margin:0;padding-left:20px;color:var(--muted)}
+.real li{margin:0 0 9px}
+.real li b{color:var(--white)}
+.rodape{margin-top:26px;color:var(--dim);font-size:13px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.linkzinho{background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;font:inherit;padding:0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="marca" href="../">PRO <b>MUSIQUE</b></a>
+    <span class="selo">Ambiente de teste</span>
+  </header>
+
+  <h1>Mix para Android — download de teste</h1>
+  <p class="lead">Página fechada para testar o caminho que o cliente vai fazer: entrar, criar a conta, escolher o plano, receber a chave de registro e baixar. Nada aqui cobra dinheiro.</p>
+
+  <ol class="passos" id="passos">
+    <li data-passo="senha">1 · Acesso</li>
+    <li data-passo="conta">2 · Conta</li>
+    <li data-passo="plano">3 · Plano</li>
+    <li data-passo="chave">4 · Registro</li>
+    <li data-passo="baixar">5 · Download</li>
+  </ol>
+
+  <!-- 1. senha -->
+  <section class="cartao" data-tela="senha">
+    <h2>Senha de acesso</h2>
+    <p class="sub">Esta área ainda não é pública. Digite a senha que você recebeu.</p>
+    <form id="f-senha">
+      <label for="senha">Senha</label>
+      <input id="senha" type="password" autocomplete="current-password" required>
+      <div class="erro" id="e-senha" role="alert"></div>
+      <button class="btn btn-primary" type="submit" id="b-senha">Entrar</button>
+    </form>
+  </section>
+
+  <!-- 2. conta -->
+  <section class="cartao" data-tela="conta" hidden>
+    <h2>Criar conta</h2>
+    <p class="sub">A chave de registro fica ligada a este e-mail.</p>
+    <form id="f-conta">
+      <label for="nome">Nome</label>
+      <input id="nome" autocomplete="name" required>
+      <label for="email">E-mail</label>
+      <input id="email" type="email" autocomplete="email" required>
+      <div class="aviso"><b>Simulação:</b> os dados ficam só neste navegador. Nenhum e-mail é enviado e nada vai para servidor.</div>
+      <div class="erro" id="e-conta" role="alert"></div>
+      <button class="btn btn-primary" type="submit">Continuar</button>
+    </form>
+  </section>
+
+  <!-- 3. plano -->
+  <section class="cartao" data-tela="plano" hidden>
+    <h2>Escolha o plano</h2>
+    <p class="sub" id="plano-sub">Preços de exemplo.</p>
+    <div class="planos" id="planos"></div>
+    <div class="aviso" id="pg-aviso" hidden><b>Pagamento simulado.</b> Na versão de verdade este botão abre o Mercado Pago. Aqui ele só finge que o pagamento foi aprovado. Não digite cartão nem dados bancários em lugar nenhum desta página.</div>
+    <div class="linha">
+      <button class="btn btn-primary" type="button" id="b-plano" disabled>Escolha um plano</button>
+      <button class="btn btn-line" type="button" data-voltar="conta">Voltar</button>
+    </div>
+  </section>
+
+  <!-- 4. chave -->
+  <section class="cartao" data-tela="chave" hidden>
+    <h2>Sua chave de registro</h2>
+    <p class="sub">Na versão de verdade ela chega por e-mail e é digitada no aplicativo para ativar o plano. Aqui você a digita abaixo para liberar o download.</p>
+    <div class="chave-grande" id="chave-mostrada"></div>
+    <dl class="resumo" id="resumo"></dl>
+    <form id="f-chave">
+      <label for="chave">Digite ou cole a chave</label>
+      <input id="chave" class="chave" autocomplete="off" spellcheck="false" placeholder="MIX-XXXX-XXXX-XXXX-XXXX" required>
+      <div class="erro" id="e-chave" role="alert"></div>
+      <div class="linha">
+        <button class="btn btn-primary" type="submit">Validar chave</button>
+        <button class="btn btn-line" type="button" id="b-copiar">Copiar a chave</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- 5. baixar -->
+  <section class="cartao" data-tela="baixar" hidden>
+    <h2>Download liberado <span class="ok">●</span></h2>
+    <p class="sub" id="baixar-sub"></p>
+    <div id="lista-arquivos"></div>
+    <div class="aviso"><b>Para instalar no Android:</b> abra o arquivo baixado e, se o celular pedir, permita instalar apps desta origem. Ele instala por cima da versão de teste anterior do Mix.</div>
+    <div class="aviso"><b>Hoje o aplicativo não confere a chave:</b> qualquer plano escolhido aqui baixa o mesmo APK, com tudo aberto. A ativação dentro do app é o próximo passo (veja abaixo).</div>
+  </section>
+
+  <section class="real">
+    <h2>Como funciona na versão de verdade</h2>
+    <ol>
+      <li><b>Conta no servidor.</b> O cadastro vai para um servidor nosso, com confirmação do e-mail. Aqui fica só no navegador.</li>
+      <li><b>Pagamento no Mercado Pago.</b> O botão de assinar abre o pagamento; quando ele é aprovado, o Mercado Pago avisa o nosso servidor automaticamente.</li>
+      <li><b>Chave assinada.</b> O servidor gera a chave e a assina com uma chave secreta que só ele tem. Ninguém consegue inventar uma chave válida. Aqui a chave tem só um dígito de conferência.</li>
+      <li><b>Link de download temporário.</b> O cliente baixa por um link que vale algumas horas. Aqui a proteção é a senha de acesso.</li>
+      <li><b>Ativação no aplicativo.</b> O cliente digita a chave no app; o app manda a chave e a identificação do aparelho, e o servidor responde com a licença assinada. O app guarda a licença, funciona sem internet por um tempo e respeita o limite de aparelhos do plano. O plano Básico abre sem chave.</li>
+      <li><b>Renovação.</b> Na mensal ou anual, o app reconfere a licença de tempos em tempos; se a assinatura acabar, ele volta para o Básico sem perder as cenas.</li>
+    </ol>
+  </section>
+
+  <div class="rodape">
+    <span>Pro Musique · página de teste, fora do menu do site</span>
+    <button class="linkzinho" type="button" id="b-zerar">Recomeçar o teste do zero</button>
+  </div>
+</div>
+
+<script src="../js/planos.js"></script>
+<script>
+(function(){
+  'use strict';
+  const $ = s => document.querySelector(s);
+  const GUARDA = 'musique.teste.v1';
+  const ler = () => { try { return JSON.parse(localStorage.getItem(GUARDA)) || {}; } catch (e) { return {}; } };
+  const gravar = o => { try { localStorage.setItem(GUARDA, JSON.stringify(o)); } catch (e) { /* sem armazenamento: segue na memória */ } };
+  let estado = ler();
+  let chaveCripto = null, indice = null;
+
+  /* ---------- telas ---------- */
+  const ORDEM = ['senha', 'conta', 'plano', 'chave', 'baixar'];
+  function ir(tela){
+    document.querySelectorAll('[data-tela]').forEach(s => s.hidden = s.dataset.tela !== tela);
+    const n = ORDEM.indexOf(tela);
+    document.querySelectorAll('#passos li').forEach((li, i) => li.className = i < n ? 'feito' : i === n ? 'agora' : '');
+    const foco = document.querySelector(`[data-tela="${tela}"] input`);
+    if (foco) setTimeout(() => foco.focus(), 30);
+    if (tela === 'plano') montarPlanos();
+    if (tela === 'chave') montarChave();
+    if (tela === 'baixar') montarDownload();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  document.querySelectorAll('[data-voltar]').forEach(b => b.onclick = () => ir(b.dataset.voltar));
+
+  /* ---------- 1. senha: a chave do arquivo vem dela ---------- */
+  const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+  async function derivar(senha, ind){
+    const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(senha), 'PBKDF2', false, ['deriveKey']);
+    return crypto.subtle.deriveKey({ name: 'PBKDF2', salt: b64(ind.sal), iterations: ind.voltas, hash: 'SHA-256' },
+      base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+  }
+  const decifrar = (chave, bytes) => crypto.subtle.decrypt({ name: 'AES-GCM', iv: bytes.slice(0, 12) }, chave, bytes.slice(12));
+
+  $('#f-senha').onsubmit = async e => {
+    e.preventDefault();
+    const b = $('#b-senha'); b.disabled = true; b.textContent = 'Conferindo…'; $('#e-senha').textContent = '';
+    try {
+      if (!window.crypto || !crypto.subtle) throw new Error('Este navegador não abre a área de teste (precisa de https).');
+      indice = indice || await fetch('arquivos.json', { cache: 'no-store' }).then(r => { if (!r.ok) throw new Error('Lista de arquivos indisponível.'); return r.json(); });
+      const k = await derivar($('#senha').value, indice);
+      try { await decifrar(k, b64(indice.verificador)); } catch (x) { throw new Error('Senha incorreta.'); }
+      chaveCripto = k;
+      $('#senha').value = '';
+      ir(estado.validada ? 'baixar' : estado.chave ? 'chave' : estado.conta ? 'plano' : 'conta');
+    } catch (x) {
+      $('#e-senha').textContent = x.message;
+    } finally { b.disabled = false; b.textContent = 'Entrar'; }
+  };
+
+  /* ---------- 2. conta ---------- */
+  $('#f-conta').onsubmit = e => {
+    e.preventDefault();
+    const nome = $('#nome').value.trim(), email = $('#email').value.trim().toLowerCase();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { $('#e-conta').textContent = 'Confira o e-mail.'; return; }
+    estado = { conta: { nome, email } }; gravar(estado);
+    ir('plano');
+  };
+
+  /* ---------- 3. plano ---------- */
+  const P = (window.MUSIQUE_PLANOS && window.MUSIQUE_PLANOS.apps && window.MUSIQUE_PLANOS.apps.mix) ||
+    { mensal: 49.9, anual: 499, basico: ['Controle da mesa'], pro: ['Funções Pro'] };
+  const reais = v => 'R$ ' + v.toFixed(2).replace('.', ',');
+  const PLANOS = {
+    basico: { nome: 'Básico', preco: 'Grátis', sub: '', lista: P.basico, pago: false },
+    mensal: { nome: 'Pro mensal', preco: reais(P.mensal), sub: '/mês', lista: ['Tudo do Básico', ...P.pro], pago: true, dias: 30 },
+    anual:  { nome: 'Pro anual',  preco: reais(P.anual),  sub: '/ano', lista: ['Tudo do Básico', ...P.pro], pago: true, dias: 365 },
+  };
+  let escolhido = null;
+  function montarPlanos(){
+    if (window.MUSIQUE_PLANOS && window.MUSIQUE_PLANOS.provisorio === false) $('#plano-sub').textContent = 'Valores do site.';
+    $('#planos').innerHTML = Object.entries(PLANOS).map(([id, p]) => `
+      <button type="button" class="plano" data-p="${id}" aria-pressed="${id === escolhido}">
+        <span class="k">${p.nome}</span>
+        <div class="preco">${p.preco}<small>${p.sub}</small></div>
+        <ul>${p.lista.slice(0, 6).map(t => `<li>${t}</li>`).join('')}${p.lista.length > 6 ? `<li>e mais ${p.lista.length - 6}</li>` : ''}</ul>
+      </button>`).join('');
+    $('#planos').querySelectorAll('.plano').forEach(b => b.onclick = () => { escolhido = b.dataset.p; montarPlanos(); });
+    const p = PLANOS[escolhido], bt = $('#b-plano');
+    bt.disabled = !p;
+    bt.textContent = !p ? 'Escolha um plano' : p.pago ? `Simular pagamento aprovado · ${p.preco}` : 'Continuar com o Básico';
+    $('#pg-aviso').hidden = !(p && p.pago);
+  }
+  $('#b-plano').onclick = () => {
+    const p = PLANOS[escolhido]; if (!p) return;
+    const hoje = new Date();
+    estado.plano = escolhido;
+    estado.pedido = 'SIM-' + Math.random().toString(36).slice(2, 8).toUpperCase();
+    estado.desde = hoje.toISOString().slice(0, 10);
+    estado.ate = p.dias ? new Date(hoje.getTime() + p.dias * 864e5).toISOString().slice(0, 10) : null;
+    estado.chave = gerarChave(escolhido);
+    estado.validada = false;
+    gravar(estado);
+    ir('chave');
+  };
+
+  /* ---------- 4. chave: MIX-PPPP-XXXX-XXXX-CCCC ---------- */
+  const ALF = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ';           // sem 0, O, 1, I
+  const COD = { basico: 'B', mensal: 'M', anual: 'A' };
+  const aleat = n => Array.from(crypto.getRandomValues(new Uint8Array(n)), x => ALF[x % 32]).join('');
+  function conferencia(corpo){
+    let h = 2166136261;                                        // FNV-1a: só um dígito de conferência
+    for (const c of corpo) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619) >>> 0; }
+    let s = ''; for (let i = 0; i < 4; i++) { s += ALF[h % 32]; h = Math.floor(h / 32); }
+    return s;
+  }
+  function gerarChave(plano){
+    const corpo = COD[plano] + aleat(3) + '-' + aleat(4) + '-' + aleat(4);
+    return `MIX-${corpo}-${conferencia(corpo + '|' + estado.conta.email)}`;
+  }
+  function validar(texto){
+    const t = texto.toUpperCase().replace(/[^0-9A-Z]/g, '');
+    const m = /^MIX([BMA][0-9A-Z]{3})([0-9A-Z]{4})([0-9A-Z]{4})([0-9A-Z]{4})$/.exec(t);
+    if (!m) return { ok: false, motivo: 'Formato inválido. A chave tem 5 blocos: MIX-XXXX-XXXX-XXXX-XXXX.' };
+    const corpo = `${m[1]}-${m[2]}-${m[3]}`;
+    if (conferencia(corpo + '|' + estado.conta.email) !== m[4]) return { ok: false, motivo: 'Chave inválida para este e-mail.' };
+    const plano = Object.keys(COD).find(k => COD[k] === m[1][0]);
+    return { ok: true, plano, chave: `MIX-${corpo}-${m[4]}` };
+  }
+  const data = s => s ? s.split('-').reverse().join('/') : '';
+  function montarChave(){
+    const p = PLANOS[estado.plano];
+    $('#chave-mostrada').textContent = estado.chave;
+    $('#resumo').innerHTML = `
+      <dt>Nome</dt><dd>${esc(estado.conta.nome)}</dd>
+      <dt>E-mail</dt><dd>${esc(estado.conta.email)}</dd>
+      <dt>Plano</dt><dd>${p.nome}${p.pago ? ' · ' + p.preco + p.sub : ''}</dd>
+      ${p.pago ? `<dt>Pedido</dt><dd>${estado.pedido} (simulado)</dd><dt>Válido até</dt><dd>${data(estado.ate)}</dd>` : ''}`;
+  }
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  $('#b-copiar').onclick = async () => {
+    try { await navigator.clipboard.writeText(estado.chave); $('#b-copiar').textContent = 'Copiada'; }
+    catch (e) { $('#chave').value = estado.chave; }
+    setTimeout(() => $('#b-copiar').textContent = 'Copiar a chave', 1600);
+  };
+  $('#f-chave').onsubmit = e => {
+    e.preventDefault();
+    const r = validar($('#chave').value);
+    if (!r.ok) { $('#e-chave').textContent = r.motivo; return; }
+    $('#e-chave').textContent = '';
+    estado.validada = true; gravar(estado);
+    ir('baixar');
+  };
+
+  /* ---------- 5. download: decifra no navegador ---------- */
+  function montarDownload(){
+    const p = PLANOS[estado.plano];
+    $('#baixar-sub').textContent = `Chave ${estado.chave} validada · plano ${p.nome}.`;
+    $('#lista-arquivos').innerHTML = indice.arquivos.map((a, i) => `
+      <div style="margin:0 0 16px">
+        <div class="linha" style="justify-content:space-between">
+          <span><b>${esc(a.nome)}</b><br><span style="color:var(--dim);font-size:13px">${(a.bytes / 1e6).toFixed(1)} MB · gerado em ${data(indice.gerado)}</span></span>
+          <button class="btn btn-primary" type="button" data-baixar="${i}">Baixar</button>
+        </div>
+        <div class="barra" hidden><i></i></div>
+        <div class="erro" data-msg="${i}"></div>
+      </div>`).join('');
+    document.querySelectorAll('[data-baixar]').forEach(b => b.onclick = () => baixar(+b.dataset.baixar, b));
+  }
+  async function baixar(i, botao){
+    const a = indice.arquivos[i], caixa = botao.closest('div').parentElement;
+    const barra = caixa.querySelector('.barra'), tira = barra.querySelector('i'), msg = caixa.querySelector('[data-msg]');
+    botao.disabled = true; barra.hidden = false; msg.textContent = ''; msg.className = 'erro';
+    try {
+      const r = await fetch('arquivos/' + a.bin);
+      if (!r.ok) throw new Error('Arquivo indisponível (' + r.status + ').');
+      const total = +r.headers.get('content-length') || a.bytes + 28;
+      const leitor = r.body.getReader(), pedacos = []; let veio = 0;
+      for (;;) { const { done, value } = await leitor.read(); if (done) break; pedacos.push(value); veio += value.length; tira.style.width = Math.min(100, veio / total * 100) + '%'; }
+      const tudo = new Uint8Array(veio); let o = 0; pedacos.forEach(p => { tudo.set(p, o); o += p.length; });
+      msg.textContent = 'Abrindo o arquivo…'; msg.className = '';
+      const claro = await decifrar(chaveCripto, tudo);
+      const tipo = a.plataforma === 'android' ? 'application/vnd.android.package-archive' : 'application/octet-stream';
+      const url = URL.createObjectURL(new Blob([claro], { type: tipo }));
+      const l = document.createElement('a'); l.href = url; l.download = a.nome; document.body.appendChild(l); l.click(); l.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 60000);
+      msg.textContent = 'Pronto: o arquivo foi para os downloads do aparelho.'; msg.className = 'ok';
+    } catch (x) {
+      msg.textContent = x.name === 'OperationError' ? 'O arquivo veio corrompido. Tente de novo.' : x.message; msg.className = 'erro';
+    } finally { botao.disabled = false; }
+  }
+
+  $('#b-zerar').onclick = () => { estado = {}; try { localStorage.removeItem(GUARDA); } catch (e) {} escolhido = null; ir(chaveCripto ? 'conta' : 'senha'); };
+  ir('senha');
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "gerado": "2026-11-09",
+  "sal": "vTP/o78/GszeLghXZx1x4Q==",
+  "voltas": 250000,
+  "verificador": "qjJT0mTIgkybpGoLHBGtv99minQ6GTe/hW3iHqYY5eWWi1oaIwc=",
+  "arquivos": [
+    {
+      "nome": "Mix-Musique-ANDROID-LIGA-NA-MESA-2026-11-09-v2.apk",
+      "bin": "arquivo-1-24f6417b.bin",
+      "bytes": 23987861,
+      "sha256": "3f6af14c5ea26c7126740365c69d916b9034cfd15711458b7cc7afc236acabf7",
+      "plataforma": "android"
+    }
+  ]
+}
