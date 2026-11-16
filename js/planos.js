@@ -20,8 +20,8 @@ window.MUSIQUE_PLANOS = {
       anual: 199,
       testeDias: 15,
       assinar: { mensal: "", anual: "" },
-      basico: ["Controle da mesa: faders, EQ, dinâmica e mandadas", "Cenas guardadas na própria mesa", "Computador e celular"],
-      pro: ["Cenas Universais", "Routing Inteligente", "Analyzer", "Feedback Hunter", "Auto Fader", "PA Alignment", "Transient", "Presets", "VS Player"],
+      basico: ["Controle da mesa inteira: faders, EQ, dinâmica e mandadas", "Cenas Universais", "Routing Inteligente", "Presets de canal e pacote de fábrica", "Computador e celular"],
+      pro: ["Analyzer", "PA Alignment", "Feedback Hunter", "Auto Fader", "Transient", "VS Player"],
     },
     vj: {
       nome: "VJ",
