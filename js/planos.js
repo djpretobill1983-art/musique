@@ -18,6 +18,7 @@ window.MUSIQUE_PLANOS = {
       nome: "Mix",
       mensal: 19.9,
       anual: 199,
+      testeDias: 30,
       assinar: { mensal: "", anual: "" },
       basico: ["Controle da mesa: faders, EQ, dinâmica e mandadas", "Cenas guardadas na própria mesa", "Computador e celular"],
       pro: ["Cenas Universais", "Routing Inteligente", "Analyzer", "Feedback Hunter", "Auto Fader", "PA Alignment", "Transient", "Presets", "VS Player"],
