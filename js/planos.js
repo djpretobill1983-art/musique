@@ -24,11 +24,12 @@ window.MUSIQUE_PLANOS = {
     },
     vj: {
       nome: "VJ",
-      mensal: 39.9,
-      anual: 399,
+      mensal: 19.9,
+      anual: 199,
+      testeDias: 30,
       assinar: { mensal: "", anual: "" },
-      basico: ["1 player e 1 saída de vídeo", "Vídeos, imagens e textos", "Blackout e fade"],
-      pro: ["Vários players e várias saídas", "Warp e máscara de projeção", "Bíblia na tela", "Slides de PDF e PowerPoint", "Multiview das saídas"],
+      basico: ["Players e reprodução de vídeos", "Bíblia, letras, imagens, artes e roteiro", "Comandos básicos de saída"],
+      pro: ["Blend e ferramentas avançadas de projeção", "Bordas e efeitos", "PDF e PowerPoint", "Reconhecimento de voz na Bíblia e nas letras (quando lançado)"],
     },
     dj: {
       nome: "DJ",
@@ -84,19 +85,22 @@ window.MUSIQUE_PLANOS = {
     const porMes = a.anual / 12;
     const economia = Math.round((1 - a.anual / (a.mensal * 12)) * 100);
     const nome = id === "pacote" ? "Pacote completo" : a.nome + " Musique";
+    const basicoSub = a.testeDias
+      ? `Gratuito após o teste completo de ${a.testeDias} dias.`
+      : "Para sempre, sem cadastro.";
     corpo.innerHTML = `
       <div class="plans">
         <article class="plan">
           <span class="plan-k">Básico</span>
           <div class="plan-price">Grátis</div>
-          <p class="plan-sub">Para sempre, sem cadastro.</p>
+          <p class="plan-sub">${basicoSub}</p>
           ${lista(a.basico)}
           <button class="btn btn-line" type="button" data-go="downloads">Baixar</button>
         </article>
         <article class="plan">
           <span class="plan-k">Pro mensal</span>
           <div class="plan-price">${reais(a.mensal)}<small>/mês</small></div>
-          <p class="plan-sub">Cobrado todo mês. Cancele quando quiser.</p>
+          <p class="plan-sub">${a.testeDias ? `Teste completo por ${a.testeDias} dias; depois, assinatura mensal.` : "Cobrado todo mês. Cancele quando quiser."}</p>
           ${lista(["Tudo do Básico", ...a.pro])}
           ${botao(a.assinar.mensal, "Assinar mensal")}
         </article>

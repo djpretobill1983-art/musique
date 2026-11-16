@@ -1,45 +1,52 @@
-// Downloads do site. Este é o único arquivo que precisa ser editado para
-// publicar um instalador.
+// Programas da aba Downloads. A página se monta sozinha a partir daqui.
 //
-// Para liberar um download: cole o endereço do instalador em "url" e preencha
-// "versao". Enquanto "url" estiver vazio, a plataforma aparece como "em breve".
-// Os instaladores não ficam nesta pasta: são grandes demais para a hospedagem
-// do site, então ficam em um serviço de arquivos (ex.: GitHub Releases) e aqui
-// vai só o endereço. No Android, "url" é o endereço do arquivo APK; quando o
-// app entrar na Play Store, troque pelo endereço dele na loja.
+//   nome, descricao : o que aparece no cartão
+//   imagem          : tela do programa (vazio = cartão sem foto, só o nome)
+//   windows/mac/linux/android : os sistemas que o programa terá. Apague a
+//                     linha de um sistema que o programa não vai ter.
 //
-// Para tirar uma plataforma de um programa, apague a linha dela.
+// FASE DE DESENVOLVIMENTO (agora): os instaladores são publicados CIFRADOS com
+// a senha de acesso, pelo comando
+//   node ferramentas/publicar-download.js <programa> <versao> <sistema>=<arquivo> ...
+// que grava em downloads/ (arquivos/*.bin e indice.json). Sem arquivo
+// publicado, o sistema aparece como "em breve". Aqui não se mexe para isso.
+//
+// DEPOIS (sem senha): cole o endereço público do instalador em "url". Um
+// sistema com "url" preenchido baixa direto, sem pedir senha. No Android, quando
+// o app entrar na Play Store, o "url" é o endereço dele na loja.
 
 window.MUSIQUE_DOWNLOADS = {
-  // Temporário: ensaio de distribuição. Apagar junto com a linha "teste" do index.html.
-  teste: {
-    versao: "0.0.1",
-    windows: { url: "https://github.com/djpretobill1983-art/musique/releases/download/teste-v0.0.1/Sistema-Integrado-Fadale-Setup-0.0.1.exe" },
-    android: { url: "https://github.com/djpretobill1983-art/musique/releases/download/teste-v0.0.1/Sistema-Integrado-Fadale-0.0.1.apk" },
-  },
   mix: {
-    versao: "",
+    nome: "Mix",
+    descricao: "Controle universal de mixers.",
+    imagem: "telas/med/pc-02-overview.webp",
     windows: { url: "" },
-    linux: { url: "" },
     mac: { url: "" },
+    linux: { url: "" },
     android: { url: "" },
   },
   vj: {
-    versao: "",
+    nome: "VJ",
+    descricao: "Media server e vídeo ao vivo.",
+    imagem: "",
     windows: { url: "" },
-    linux: { url: "" },
     mac: { url: "" },
+    linux: { url: "" },
   },
   dj: {
-    versao: "",
+    nome: "DJ",
+    descricao: "Performance musical.",
+    imagem: "telas/med/dj-01-decks.webp",
     windows: { url: "" },
-    linux: { url: "" },
     mac: { url: "" },
+    linux: { url: "" },
   },
   live: {
-    versao: "",
+    nome: "Live",
+    descricao: "Operação de áudio e vídeo ao vivo.",
+    imagem: "telas/med/live-02-ajustes.webp",
     windows: { url: "" },
-    linux: { url: "" },
     mac: { url: "" },
+    linux: { url: "" },
   },
 };

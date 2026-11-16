@@ -1,0 +1,25 @@
+{
+  "sal": "k+gap8YaSLIo4LFk6cibaQ==",
+  "voltas": 250000,
+  "verificador": "DwzQfRdGuPP4JDiMCAeSM3oy5wOhMqoF0et2J10wTQJDUt6NseU=",
+  "programas": {
+    "mix": {
+      "versao": "v20",
+      "data": "2026-11-16",
+      "arquivos": {
+        "windows": {
+          "nome": "Mix-Musique-Setup-2026-11-16-v20.exe",
+          "bin": "mix-windows-493ede59.bin",
+          "bytes": 96567107,
+          "sha256": "6b696832a55b54b813d974e76040eb63d192cb36eaf6b894e0fd2917609965de"
+        },
+        "android": {
+          "nome": "Mix-Musique-ANDROID-LIGA-NA-MESA-2026-11-16-v20.apk",
+          "bin": "mix-android-9af1c114.bin",
+          "bytes": 23754981,
+          "sha256": "24907c100809410a2d66595bde5f072a9acda1e6d3a7cc510af1622c53e1676d"
+        }
+      }
+    }
+  }
+}
