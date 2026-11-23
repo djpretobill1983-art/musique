@@ -4,20 +4,20 @@
   "verificador": "DwzQfRdGuPP4JDiMCAeSM3oy5wOhMqoF0et2J10wTQJDUt6NseU=",
   "programas": {
     "mix": {
-      "versao": "v21",
-      "data": "2026-11-16",
+      "versao": "v22",
+      "data": "2026-11-23",
       "arquivos": {
         "windows": {
-          "nome": "Mix-Musique-Setup-2026-11-16-v21.exe",
-          "bin": "mix-windows-4d263a8a.bin",
-          "bytes": 96567017,
-          "sha256": "c50b93ffda00450fc74a6832272ee63ce370b029c41920a1ae2f1d4db6ac126e"
+          "nome": "Mix-Musique-Setup-2026-11-23-v22.exe",
+          "bin": "mix-windows-c783fa9f.bin",
+          "bytes": 96777874,
+          "sha256": "10a3d5ca694aef93e85116e91cb3e2c015067d9af28350d65234fd2d12941a03"
         },
         "android": {
-          "nome": "Mix-Musique-ANDROID-LIGA-NA-MESA-2026-11-16-v21.apk",
-          "bin": "mix-android-088e4a6d.bin",
-          "bytes": 23754981,
-          "sha256": "b622b5fcefbc0c5313ff8a2e38cbb591d00891d80b2a6c6f09c545dc6955e822"
+          "nome": "Mix-Musique-ANDROID-LIGA-NA-MESA-2026-11-23-v22.apk",
+          "bin": "mix-android-056d7753.bin",
+          "bytes": 23858147,
+          "sha256": "5f5d69c0a4e893783d8b3af3fbc0f2a1c45673444e6bf7aea0ecdcab5264ea6f"
         }
       }
     }
